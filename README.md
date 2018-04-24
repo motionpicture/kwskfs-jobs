@@ -45,8 +45,6 @@ npm run build
 | `GMO_ENDPOINT`                              | true                  |                     | GMO API endpoint        |
 | `GMO_SITE_ID`                               | true                  |                     | GMO SiteID              |
 | `GMO_SITE_PASS`                             | true                  |                     | GMO SitePass            |
-| `COA_ENDPOINT`                              | true                  |                     | COA API endpoint        |
-| `COA_REFRESH_TOKEN`                         | true                  |                     | COA API refresh token   |
 | `ITEM_AVAILABILITY_REDIS_HOST`              | true                  |                     | 在庫状況保管用Redis Cache host |
 | `ITEM_AVAILABILITY_REDIS_PORT`              | true                  |                     | 在庫状況保管用Redis Cache port |
 | `ITEM_AVAILABILITY_REDIS_KEY`               | true                  |                     | 在庫状況保管用Redis Cache key  |
