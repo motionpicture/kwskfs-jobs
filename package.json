@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "@motionpicture/kwskfs-domain": "0.0.0-alpha.7",
+    "@motionpicture/kwskfs-domain": "0.0.0-alpha.8",
     "debug": "^3.1.0",
     "moment": "^2.20.1"
   },
@@ -33,7 +33,7 @@
     "ts-node": "^3.3.0",
     "tslint": "^5.9.1",
     "tslint-microsoft-contrib": "^5.0.3",
-    "typescript": "^2.7.2"
+    "typescript": "^2.8.3"
   },
   "engines": {
     "node": ">=8.0.0",
