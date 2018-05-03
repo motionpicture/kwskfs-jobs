@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "@motionpicture/kwskfs-domain": "0.0.0-alpha.14",
+    "@motionpicture/kwskfs-domain": "0.0.0-alpha.15",
     "debug": "^3.1.0",
     "moment": "^2.20.1"
   },
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@types/debug": "0.0.30",
     "@types/mocha": "^5.2.0",
-    "@types/node": "^8.9.4",
+    "@types/node": "^8.10.11",
     "@types/power-assert": "^1.4.29",
     "@types/sinon": "^2.3.7",
     "concurrently": "^3.5.1",
@@ -30,7 +30,7 @@
     "power-assert": "^1.4.4",
     "rimraf": "^2.6.2",
     "sinon": "^3.3.0",
-    "snyk": "^1.69.9",
+    "snyk": "^1.78.0",
     "ts-node": "^6.0.2",
     "tslint": "^5.9.1",
     "tslint-microsoft-contrib": "^5.0.3",
