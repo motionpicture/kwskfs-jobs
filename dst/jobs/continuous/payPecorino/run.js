@@ -1,8 +1,4 @@
 "use strict";
-/**
- * Pecorino支払取引実行
- * @ignore
- */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -12,6 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Pecorino支払取引実行
+ * @ignore
+ */
 const kwskfs = require("@motionpicture/kwskfs-domain");
 const createDebug = require("debug");
 const mongooseConnectionOptions_1 = require("../../../mongooseConnectionOptions");
@@ -19,8 +19,8 @@ const debug = createDebug('kwskfs-jobs:continuous:settleCreditCard');
 kwskfs.mongoose.connect(process.env.MONGOLAB_URI, mongooseConnectionOptions_1.default).then(debug).catch(console.error);
 let count = 0;
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
-const INTERVAL_MILLISECONDS = 1000;
-const taskRepository = new kwskfs.repository.Task(kwskfs.mongoose.connection);
+const INTERVAL_MILLISECONDS = 200;
+const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
 const authClient = new kwskfs.pecorinoapi.auth.ClientCredentials({
     domain: process.env.PECORINO_AUTHORIZE_SERVER_DOMAIN,
     clientId: process.env.PECORINO_CLIENT_ID,
@@ -35,7 +35,7 @@ setInterval(() => __awaiter(this, void 0, void 0, function* () {
     count += 1;
     try {
         yield kwskfs.service.task.executeByName(kwskfs.factory.taskName.PayPecorino)({
-            taskRepo: taskRepository,
+            taskRepo: taskRepo,
             connection: kwskfs.mongoose.connection,
             pecorinoAuthClient: authClient
         });

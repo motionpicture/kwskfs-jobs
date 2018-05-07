@@ -1,28 +1,21 @@
 /**
- * Pecorino取引中止
+ * Bluelab支払取引実行
+ * @ignore
  */
 import * as kwskfs from '@motionpicture/kwskfs-domain';
 import * as createDebug from 'debug';
 
 import mongooseConnectionOptions from '../../../mongooseConnectionOptions';
 
-const debug = createDebug('kwskfs-jobs:*');
+const debug = createDebug('kwskfs-jobs:continuous:settleCreditCard');
 
 kwskfs.mongoose.connect(<string>process.env.MONGOLAB_URI, mongooseConnectionOptions).then(debug).catch(console.error);
 
 let count = 0;
 
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
-const INTERVAL_MILLISECONDS = 1000;
+const INTERVAL_MILLISECONDS = 200;
 const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
-
-const authClient = new kwskfs.pecorinoapi.auth.ClientCredentials({
-    domain: <string>process.env.PECORINO_AUTHORIZE_SERVER_DOMAIN,
-    clientId: <string>process.env.PECORINO_CLIENT_ID,
-    clientSecret: <string>process.env.PECORINO_CLIENT_SECRET,
-    scopes: [],
-    state: ''
-});
 
 setInterval(
     async () => {
@@ -34,11 +27,10 @@ setInterval(
 
         try {
             await kwskfs.service.task.executeByName(
-                kwskfs.factory.taskName.CancelPecorino
+                kwskfs.factory.taskName.PayBluelab
             )({
                 taskRepo: taskRepo,
-                connection: kwskfs.mongoose.connection,
-                pecorinoAuthClient: authClient
+                connection: kwskfs.mongoose.connection
             });
         } catch (error) {
             console.error(error.message);

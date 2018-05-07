@@ -20,7 +20,7 @@ kwskfs.mongoose.connect(process.env.MONGOLAB_URI, mongooseConnectionOptions_1.de
 let count = 0;
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
 const INTERVAL_MILLISECONDS = 200;
-const taskRepository = new kwskfs.repository.Task(kwskfs.mongoose.connection);
+const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
 setInterval(() => __awaiter(this, void 0, void 0, function* () {
     if (count > MAX_NUBMER_OF_PARALLEL_TASKS) {
         return;
@@ -28,7 +28,7 @@ setInterval(() => __awaiter(this, void 0, void 0, function* () {
     count += 1;
     try {
         yield kwskfs.service.task.executeByName(kwskfs.factory.taskName.SendOrder)({
-            taskRepo: taskRepository,
+            taskRepo: taskRepo,
             connection: kwskfs.mongoose.connection
         });
     }

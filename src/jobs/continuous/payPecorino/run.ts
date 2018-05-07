@@ -2,7 +2,6 @@
  * Pecorino支払取引実行
  * @ignore
  */
-
 import * as kwskfs from '@motionpicture/kwskfs-domain';
 import * as createDebug from 'debug';
 
@@ -15,8 +14,8 @@ kwskfs.mongoose.connect(<string>process.env.MONGOLAB_URI, mongooseConnectionOpti
 let count = 0;
 
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
-const INTERVAL_MILLISECONDS = 1000;
-const taskRepository = new kwskfs.repository.Task(kwskfs.mongoose.connection);
+const INTERVAL_MILLISECONDS = 200;
+const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
 
 const authClient = new kwskfs.pecorinoapi.auth.ClientCredentials({
     domain: <string>process.env.PECORINO_AUTHORIZE_SERVER_DOMAIN,
@@ -38,7 +37,7 @@ setInterval(
             await kwskfs.service.task.executeByName(
                 kwskfs.factory.taskName.PayPecorino
             )({
-                taskRepo: taskRepository,
+                taskRepo: taskRepo,
                 connection: kwskfs.mongoose.connection,
                 pecorinoAuthClient: authClient
             });

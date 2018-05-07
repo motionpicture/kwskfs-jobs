@@ -16,7 +16,7 @@ let countExecute = 0;
 
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
 const INTERVAL_MILLISECONDS = 500;
-const taskRepository = new kwskfs.repository.Task(kwskfs.mongoose.connection);
+const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
 const transactionRepository = new kwskfs.repository.Transaction(kwskfs.mongoose.connection);
 
 setInterval(
@@ -32,7 +32,7 @@ setInterval(
             await kwskfs.service.transaction.returnOrder.exportTasks(
                 kwskfs.factory.transactionStatusType.Expired
             )({
-                task: taskRepository,
+                task: taskRepo,
                 transaction: transactionRepository
             });
         } catch (error) {

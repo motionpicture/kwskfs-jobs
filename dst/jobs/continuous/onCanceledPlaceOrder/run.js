@@ -20,7 +20,7 @@ kwskfs.mongoose.connect(process.env.MONGOLAB_URI, mongooseConnectionOptions_1.de
 let countExecute = 0;
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
 const INTERVAL_MILLISECONDS = 500;
-const taskRepository = new kwskfs.repository.Task(kwskfs.mongoose.connection);
+const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
 const transactionRepository = new kwskfs.repository.Transaction(kwskfs.mongoose.connection);
 setInterval(() => __awaiter(this, void 0, void 0, function* () {
     if (countExecute > MAX_NUBMER_OF_PARALLEL_TASKS) {
@@ -30,7 +30,7 @@ setInterval(() => __awaiter(this, void 0, void 0, function* () {
     try {
         debug('exporting tasks...');
         yield kwskfs.service.transaction.placeOrder.exportTasks(kwskfs.factory.transactionStatusType.Canceled)({
-            task: taskRepository,
+            task: taskRepo,
             transaction: transactionRepository
         });
     }

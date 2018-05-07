@@ -22,14 +22,14 @@ let count = 0;
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
 const INTERVAL_MILLISECONDS = 1000;
 const RETRY_INTERVAL_MINUTES = 10;
-const taskRepository = new kwskfs.repository.Task(kwskfs.mongoose.connection);
+const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
 setInterval(() => __awaiter(this, void 0, void 0, function* () {
     if (count > MAX_NUBMER_OF_PARALLEL_TASKS) {
         return;
     }
     count += 1;
     try {
-        yield kwskfs.service.task.retry(RETRY_INTERVAL_MINUTES)({ task: taskRepository });
+        yield kwskfs.service.task.retry(RETRY_INTERVAL_MINUTES)({ task: taskRepo });
     }
     catch (error) {
         console.error(error.message);

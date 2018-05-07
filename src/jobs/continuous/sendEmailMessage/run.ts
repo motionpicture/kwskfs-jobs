@@ -16,7 +16,7 @@ let count = 0;
 
 const MAX_NUBMER_OF_PARALLEL_TASKS = 10;
 const INTERVAL_MILLISECONDS = 200;
-const taskRepository = new kwskfs.repository.Task(kwskfs.mongoose.connection);
+const taskRepo = new kwskfs.repository.Task(kwskfs.mongoose.connection);
 
 setInterval(
     async () => {
@@ -30,7 +30,7 @@ setInterval(
             await kwskfs.service.task.executeByName(
                 kwskfs.factory.taskName.SendEmailMessage
             )({
-                taskRepo: taskRepository,
+                taskRepo: taskRepo,
                 connection: kwskfs.mongoose.connection
             });
         } catch (error) {
