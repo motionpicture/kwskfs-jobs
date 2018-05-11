@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## v0.0.1 - 2018-05-11
+
+- Bluelab環境変数を本番環境を想定して調整。
+
 ## v0.0.0 - 2018-05-11
 
 - sskts-jobsを引き継いでたたき台として実装。
