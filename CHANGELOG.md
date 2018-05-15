@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Security
 
+## v0.0.3 - 2018-05-15
+
+### Changed
+
+- メール送信元を調整。
+
 ## v0.0.2 - 2018-05-13
 
 ### Changed

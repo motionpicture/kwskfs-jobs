@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "@motionpicture/kwskfs-domain": "0.0.0-alpha.30",
+    "@motionpicture/kwskfs-domain": "0.0.0-alpha.37",
     "debug": "^3.1.0",
     "moment": "^2.20.1"
   },
@@ -60,5 +60,5 @@
     "version": "git add -A",
     "postversion": "git push origin --tags"
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
